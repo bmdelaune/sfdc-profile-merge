@@ -13,3 +13,6 @@ Run the following
 ```
 python3 main.py -in <path to input profile> -to <path to profile being overwritten> -o <path to output file>
 ```
+
+## Known Issues
+1. This package will not work if the profiles contain ```profileActionOverrides```.
