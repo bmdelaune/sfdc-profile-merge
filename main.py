@@ -1,18 +1,15 @@
-from lxml import etree
-import json
 import sfdc_profile_merge as profile
+import argparse
 
-tree_to = etree.parse('in/full.profile')
-root_to = tree_to.getroot()
+parser = argparse.ArgumentParser()
+parser.add_argument('-in', action='store', dest='input_file_path',
+                    help='relative path to the overwriting profile')
+parser.add_argument('-to', action='store', dest='original_file_path',
+                    help='relative path to the profile being overwritten')
+parser.add_argument('-o', action='store', dest='out_file_name',
+                    help='profile that should be created')
 
-tree_from = etree.parse('in/small.profile')
-root_from = tree_from.getroot()
+args = parser.parse_args()
 
-from_dict = profile.convertxmltodict(root_from)
-to_dict = profile.convertxmltodict(root_to)
-
-merged = profile.mergeprofiles(from_profile=from_dict,to_profile=to_dict)
-
-final_xml = profile.convertdicttoxml(merged)
-
-print(etree.tostring(final_xml))
+profile.mergetheseprofiles(
+    args.input_file_path, args.original_file_path, args.out_file_name)
