@@ -28,7 +28,7 @@ if isdir(args.input_file_path):
                 #TODO copy the file into output directory
                 copyfile(join(args.input_file_path, infile), join(
                     args.original_file_path, infile))
-            else :
+            else:
                 profile.mergetheseprofiles(
                     join(args.input_file_path, infile), join(
                         args.original_file_path, infile), join(args.original_file_path, infile)) # should probably use output file directory if given
