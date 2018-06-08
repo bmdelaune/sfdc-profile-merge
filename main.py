@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sfdc_profile_merge as profile
 from os.path import isdir, isfile, join
 from os import listdir
