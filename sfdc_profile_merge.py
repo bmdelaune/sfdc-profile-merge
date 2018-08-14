@@ -26,7 +26,7 @@ def convertxmltodict(xml_root):
             if elem.tag.endswith('recordType'):
                 ref = 'RT-'+elem.text
             else:
-                ref = 'L-'+elem.text
+                ref = 'L-'+elem.text.split('-',maxsplit=1)[0]
         elif tag == 'loginHours':
             ref = 'all'
         elif tag == 'loginIpRanges':
@@ -55,7 +55,7 @@ def convertxmltodict(xml_root):
         elif tag == 'userPermissions':
             ref = child.find('name', xml_root.nsmap).text
         else:
-            print(tag)
+            print('WARNING: ' + tag + ' is not a supported profile permission')
 
         if ref != None:
             value = {}
